@@ -54,10 +54,10 @@ while true; do
   # if so, break and notify
   lc=$(echo $output | tail -c2)
   case $lc in
-  "$" | "#" )
+  "$" | "#" | ">" )
     # notify-send does not always work due to changing dbus params
     # see https://superuser.com/questions/1118878/using-notify-send-in-a-tmux-session-shows-error-no-notification#1118896
-    notify-send "$complete_message"
+    osascript -e "display notification '$complete_message'"
     # trigger visual bell
     # your terminal emulator can be setup to set URGENT bit on visual bell
     # for eg, Xresources -> URxvt.urgentOnBell: true
